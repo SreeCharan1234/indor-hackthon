@@ -1,0 +1,11 @@
+git add .
+git commit -m "first commt"
+git push 
+git checkout main
+git merge sree
+
+
+
+
+when merge the file:-
+git merge orgin/sushil
