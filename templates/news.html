@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saarthi | Community Connect</title>
+    <!-- IconScout CDN -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../static/style.css" />
+    <link
+      rel="shortcut icon"
+      href="/static/images/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <style>
+      /* General styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 250px; /* Adjust the width as needed */
+    height: 100%;
+    position: fixed; /* Fix the sidebar position */
+    left: 0; /* Align it to the left */
+    top: 0; /* Align it to the top */
+    padding-top: 20px; /* Padding at the top to avoid content sticking to the edge */
+}
+
+.sidebar {
+    width: 100%;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.menu-item span {
+    margin-right: 10px;
+    font-size: 30px;
+}
+
+
+    </style>
+  </head>
+
+  <body>
+    <nav>
+  <div class="container">
+    <img
+      src="/static/images/logo.png"
+      alt=""
+      height="50%"
+      width=""
+      class="logo"
+    />
+    <div class="search-bar">
+      <i class="uil uil-search"></i>
+      <input
+        type="search"
+        placeholder="Search for events, volunteer opportunities, and jobs nearby"
+      />
+    </div>
+    <div class="create">
+      <div class="profile-photo">
+        <img src="../static/images/profile-13.jpg" alt="Profile Image" />
+      </div>
+      <a href="login.html"><label class="btn btn-warning">Logout</label></a>
+    </div>
+    <div class="create-post-overlay" id="create-post-overlay">
+      <div class="create-post">
+        <button class="close-button" id="closeButton">&times;</button>
+        <div class="header">
+          <img
+            src="/static/images/profile-1.jpg"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <div class="user-info">
+            <span class="username">Sushil Verma</span>
+          </div>
+        </div>
+        <form id="postForm" method="POST" enctype="multipart/form-data">
+          <textarea
+            name="post_text"
+            placeholder="What's on your mind? (Use '//' to generate AI based captions)"
+            class="post-input"
+          ></textarea>
+          <div class="image-upload">
+            <label for="imageUpload" class="image-upload-label">Upload Image</label>
+            <input
+              type="file"
+              id="imageUpload"
+              name="image_file"
+              accept="image/*"
+              class="image-upload-input"
+            />
+            <span class="image-name" id="imageName"></span>
+          </div>
+          <button type="submit" class="post-button" disabled>Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+    <!-------------------------------- MAIN ----------------------------------->
+    <main>
+        <div class="container">
+          <!----------------- LEFT -------------------->
+          <div class="left">
+            <!----------------- SIDEBAR -------------------->
+            <div class="sidebar">
+              <a class="menu-item active" href="home.html">
+                  <span><i class="bi bi-house-heart-fill"></i></span>
+                  <h3>Home</h3>
+              </a>
+              <a class="menu-item" href="all.html">
+                  <span><i class="bi bi-search-heart-fill"></i></span>
+                  <h3>Explore</h3>
+              </a>
+              <a class="menu-item" id="messages-notifications" href="news.html">
+                  <span><i class="bi bi-heart-pulse-fill"></i></span>
+                  <h3>News</h3>
+              </a>
+              <a class="menu-item" href="dashboard.html">
+                  <span><i class="bi bi-people"></i></span>
+                  <h3>Meeting</h3>
+              </a>
+              <a class="menu-item" href="job.html" id="theme">
+                  <span><i class="bi bi-person-check"></i></span>
+                  <h3>Find Job</h3>
+              </a>
+          </div>  
+            <label class="btn btn-primary" for="create-post" id="create-post-btn"> <b style="color: white;"> Upload a post</b></label>
+          </div>
+          <!----------------- END OF SIDEBAR -------------------->
+        
+        <!----------------- MIDDLE -------------------->
+        <div class="middle">
+           
+          <div class="feeds">
+            <!----------------- FEED 1 -------------------->
+            
+         
+            
+              <!----------------- END OF FEED 1 -------------------->
+
+              <!----------------- FEED 2 -------------------->
+              
+              <!----------------- END OF FEED 2 -------------------->
+      
+              <!-- FEED 3 -->
+              <div class="feed">
+                <div class="head">
+                  <div class="user">
+                    <div class="profile-photo">
+                      <img src="../static/images/profile-4.jpg">
+                    </div>
+                    <div class="info">
+                      <h3>Manish Kumar</h3>
+                      <small>Indore, 50 Minutes Ago</small>
+                    </div>
+                  </div>
+                  <span class="edit">
+                    <i class="uil uil-ellipsis-h"></i>
+                  </span>
+                </div>
+  
+                <div class="photo">
+                  <img src="../static/images/new-2.jpeg">
+                </div>
+  
+                <div class="action-buttons">
+                  <div class="interaction-buttons">
+                    <!-- <span><i class="uil uil-heart"></i></span>
+                    <span><i class="uil uil-comment-dots"></i></span> -->
+                    <span><i class="uil uil-share-alt"></i></span>
+                  </div>
+                  <div class="bookmark">
+                    <span><i class="uil uil-bookmark-full"></i></span>
+                  </div>
+                </div>
+  
+                <!-- <div class="liked-by">
+                  <span><img src="../static/images/profile-12.jpg"></span>
+                  <span><img src="../static/images/profile-13.jpg"></span>
+                  <span><img src="../static/images/profile-14.jpg"></span>
+                  <!--Clara Dwayne</b> and <b>2, 323  -->
+                </div> -->
+  
+                <div class="caption">
+                  <p>
+                    <b>Manish Kumar</b> Lorem ipsum dolor sit, amet consectetur
+                    adipisicing elit. Quo ullam, quam voluptatibus natus ex
+                    corporis ea atque quisquam, necessitatibus, cumque eligendi
+                    aliquam nulla soluta hic. Obcaecati, tempore dignissimos! Esse
+                    cupiditate laborum ullam, quae necessitatibus, officiis,
+                    quaerat aspernatur illo voluptatum repellat perferendis
+                    voluptatem similique. Assumenda nostrum, eius sit laborum
+                    nesciunt deserunt!
+                    <span class="harsh-tag">#lifestyle</span>
+                  </p>
+                </div>
+  
+
+            
+              </div>
+              
+              <!-- END OF FEED 3 -->
+              <div class="feed">
+                <div class="head" style="position: relative;">
+                    <div class="user">
+                        <div class="profile-photo">
+                            <img src="../static/images/profile-10.jpg">
+                        </div>
+                        <div class="info">
+                            <h3>Himanshi Sinha</h3>
+                            <small>Indore, 2 Hours Ago</small>
+                        </div>
+                    </div>
+                    <span class="edit" onclick="toggleDropdownEdit()" style="cursor: pointer; position: absolute; top: 0; right: 0;">
+                        <i class="uil uil-ellipsis-h" style="font-size: 24px;"></i>
+                    </span>
+                    <div class="dropdown" id="dropdown" style="display: none; position: absolute; top: 100%; right: 0; background-color: #f9f9f9; min-width: 100px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1;">
+                        <ul style="list-style-type: none; margin: 0; padding: 0;">
+                            <li style="padding: 12px 16px; cursor: pointer;" onclick="editPost()">Edit</li>
+                            <li style="padding: 12px 16px; cursor: pointer;" onclick="deletePost()">Delete</li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <div class="photo"> 
+                    <img src="../static/images/new-1.jpeg">
+                </div>
+    
+                <div class="action-buttons">
+                    <div class="interaction-buttons">
+                        <!-- <span><i class="uil uil-heart"></i></span>
+                        <span><i class="uil uil-comment-dots"></i></span>-->
+                        <span><i class="uil uil-share-alt"></i></span>
+                    </div>
+                    <div class="bookmark">
+                        <span><i class="uil uil-bookmark-full"></i></span>
+                    </div>
+                </div>
+<!--       
+                <div class="liked-by">
+                    <span><img src="../static/images/profile-11.jpg"></span>
+                    <span><img src="../static/images/profile-5.jpg"></span>
+                    <span><img src="../static/images/profile-16.jpg"></span>
+                    <!--Diana Rose</b> and <b>2, 323  -->
+                </div> -->
+    
+                <div class="caption">
+                    <p><b>Himanshi Sinha</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, fugiat? Ipsam voluptatibus beatae facere eos harum voluptas distinctio, officia, facilis sed quisquam esse, assumenda minima ut. Excepturi sit quis reiciendis! 
+                    <span class="harsh-tag">#lifestyle</span></p>
+                </div>
+    
+                <!-- <div class="--> text-muted"> -->
+                    <!-- 100 -->
+                <!-- </div> -->
+            </div>
+            </div>
+          <!----------------- END OF FEEDS -------------------->
+        </div>
+      
+        <!----------------- END OF MIDDLE -------------------->
+
+        <!----------------- RIGHT -------------------->
+        <div class="right" id="message-search" >
+          <div class="messages" style="background-color: black;">
+            <!-- MESSAGES -->
+            <!-- END OF MESSAGES -->
+          </div>
+          <!-- FRIEND REQUEST -->
+        </div>
+        
+    </main>
+
+    <!----------------- THEME CUSTOMIZATION -------------------->
+    <div class="customize-theme">
+      <div class="card">
+        <h2>Customize your view</h2>
+        <p class="text-muted">Manage your font size, color, and background</p>
+
+        <!----------- FONT SIZE ----------->
+        <div class="font-size">
+          <h4>Font Size</h4>
+          <div>
+            <h6>Aa</h6>
+            <div class="choose-size">
+              <span class="font-size-1"></span>
+              <span class="font-size-2 active"></span>
+              <span class="font-size-3"></span>
+              <span class="font-size-4"></span>
+              <span class="font-size-5"></span>
+            </div>
+            <h3>Aa</h3>
+          </div>
+        </div>
+
+        <!----------- PRIMARY COLORS ----------->
+        <div class="color">
+          <h4>Color</h4>
+          <div class="choose-color">
+            <span class="color-1 active"></span>
+            <span class="color-2"></span>
+            <span class="color-3"></span>
+            <span class="color-4"></span>
+            <span class="color-5"></span>
+          </div>
+        </div>
+
+        <!----------- BACKGROUND COLORS ----------->
+        <div class="background">
+          <h4>Background</h4>
+          <div class="choose-bg">
+            <div class="bg-1 active">
+              <span></span>
+              <h5 for="bg-1">Light</h5>
+            </div>
+            <div class="bg-2">
+              <span></span>
+              <h5 for="bg-2">Dim</h5>
+            </div>
+            <div class="bg-3">
+              <span></span>
+              <h5 for="bg-3">Dark</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+      // Profile Image
+      function toggleDropdown() {
+    var dropdownMenu = document.getElementById("profile-dropdown-menu");
+    dropdownMenu.classList.toggle("show");
+  }
+
+function toggleDropdownEdit() {
+  var dropdown = document.getElementById("dropdown");
+  if (dropdown.style.display === "none") {
+    dropdown.style.display = "block";
+  } else {
+    dropdown.style.display = "none";
+  }
+}
+
+
+function logout() {
+    // Implement logout functionality here
+    alert("Logout clicked!");
+}
+
+
+      // Sidebar
+      const menuItems = document.querySelectorAll(".menu-item");
+
+      // Messages
+      const messageNotification = document.querySelector(
+        "#messages-notifications"
+      );
+      const messages = document.querySelector(".messages");
+      const message = messages.querySelectorAll(".message");
+      const messageSearch = document.querySelector("#message-search");
+
+      //Theme
+      // const theme = document.querySelector("#theme");
+      const themeModal = document.querySelector(".customize-theme");
+      const fontSize = document.querySelectorAll(".choose-size span");
+      var root = document.querySelector(":root");
+      const colorPalette = document.querySelectorAll(".choose-color span");
+      // const Bg1 = document.querySelector(".bg-1");
+      // const Bg2 = document.querySelector(".bg-2");
+      const Bg3 = document.querySelector(".bg-3");
+
+      // ============== SIDEBAR ==============
+
+      // Remove active class from all menu items
+      const changeActiveItem = () => {
+        menuItems.forEach((item) => {
+          item.classList.remove("active");
+        });
+      };
+
+      menuItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          changeActiveItem();
+          item.classList.add("active");
+          if (item.id != "notifications") {
+            document.querySelector(".notifications-popup").style.display =
+              "none";
+          } else {
+            document.querySelector(".notifications-popup").style.display =
+              "block";
+            document.querySelector(
+              "#notifications .notification-count"
+            ).style.display = "none";
+          }
+        });
+      });
+
+      // ============== MESSAGES ==============
+
+      //Searches messages
+      const searchMessage = () => {
+        const val = messageSearch.value.toLowerCase();
+        message.forEach((user) => {
+          let name = user.querySelector("h5").textContent.toLowerCase();
+          if (name.indexOf(val) != -1) {
+            user.style.display = "flex";
+          } else {
+            user.style.display = "none";
+          }
+        });
+      };
+
+      //Search for messages
+      messageSearch.addEventListener("keyup", searchMessage);
+
+      //Highlight messages card when messages menu item is clicked
+      messageNotification.addEventListener("click", () => {
+        messages.style.boxShadow = "0 0 1rem var(--color-primary)";
+        messageNotification.querySelector(".notification-count").style.display =
+          "none";
+        setTimeout(() => {
+          messages.style.boxShadow = "none";
+        }, 2000);
+      });
+
+      // ============== THEME / DISPLAY CUSTOMIZATION ==============
+
+      // Opens Modal
+      const openThemeModal = () => {
+        themeModal.style.display = "grid";
+      };
+
+      // Closes Modal
+      const closeThemeModal = (e) => {
+        if (e.target.classList.contains("customize-theme")) {
+          themeModal.style.display = "none";
+        }
+      };
+
+      themeModal.addEventListener("click", closeThemeModal);
+      // theme.addEventListener("click", openThemeModal);
+
+      // ============== FONT SIZE ==============
+
+      // remove active class from spans or font size selectors
+      const removeSizeSelectors = () => {
+        fontSize.forEach((size) => {
+          size.classList.remove("active");
+        });
+      };
+
+      fontSize.forEach((size) => {
+        size.addEventListener("click", () => {
+          removeSizeSelectors();
+          let fontSize;
+          size.classList.toggle("active");
+
+          if (size.classList.contains("font-size-1")) {
+            fontSize = "10px";
+            root.style.setProperty("----sticky-top-left", "5.4rem");
+            root.style.setProperty("----sticky-top-right", "5.4rem");
+          } else if (size.classList.contains("font-size-2")) {
+            fontSize = "13px";
+            root.style.setProperty("----sticky-top-left", "5.4rem");
+            root.style.setProperty("----sticky-top-right", "-7rem");
+          } else if (size.classList.contains("font-size-3")) {
+            fontSize = "16px";
+            root.style.setProperty("----sticky-top-left", "-2rem");
+            root.style.setProperty("----sticky-top-right", "-17rem");
+          } else if (size.classList.contains("font-size-4")) {
+            fontSize = "19px";
+            root.style.setProperty("----sticky-top-left", "-5rem");
+            root.style.setProperty("----sticky-top-right", "-25rem");
+          } else if (size.classList.contains("font-size-5")) {
+            fontSize = "22px";
+            root.style.setProperty("----sticky-top-left", "-12rem");
+            root.style.setProperty("----sticky-top-right", "-35rem");
+          }
+
+          // change font size of the root html element
+          document.querySelector("html").style.fontSize = fontSize;
+        });
+      });
+
+      // Remove active class from colors
+      const changeActiveColorClass = () => {
+        colorPalette.forEach((colorPicker) => {
+          colorPicker.classList.remove("active");
+        });
+      };
+
+      // Change color primary
+      colorPalette.forEach((color) => {
+        color.addEventListener("click", () => {
+          let primary;
+          changeActiveColorClass();
+
+          if (color.classList.contains("color-1")) {
+            primaryHue = 252;
+          } else if (color.classList.contains("color-2")) {
+            primaryHue = 52;
+          } else if (color.classList.contains("color-3")) {
+            primaryHue = 352;
+          } else if (color.classList.contains("color-4")) {
+            primaryHue = 152;
+          } else if (color.classList.contains("color-5")) {
+            primaryHue = 202;
+          }
+
+          color.classList.add("active");
+          root.style.setProperty("--primary-color-hue", primaryHue);
+        });
+      });
+
+// Theme Background Values
+let lightColorLightness = "0%"; // Set default light color lightness
+let whiteColorLightness = "10%"; // Set default white color lightness
+let darkColorLightness = "95%"; // Set default dark color lightness
+
+
+ // Changes background color
+const changeBG = () => {
+    document.documentElement.style.setProperty("--light-color-lightness", lightColorLightness);
+    document.documentElement.style.setProperty("--white-color-lightness", whiteColorLightness);
+    document.documentElement.style.setProperty("--dark-color-lightness", darkColorLightness);
+};
+
+// Set default theme
+Bg3.classList.add("active");
+changeBG();
+
+// Remove the theme selector
+themeModal.style.display = "none";
+      document.addEventListener("DOMContentLoaded", function () {
+        const postInput = document.querySelector(".post-input");
+        const postButton = document.querySelector(".post-button");
+        const imageUploadInput = document.getElementById("imageUpload");
+        const imageName = document.getElementById("imageName");
+        const closeButton = document.getElementById("closeButton");
+        const postClose = document.getElementById("closeButt");
+        const createPostOverlay = document.getElementById(
+          "create-post-overlay"
+        );
+        const createPostBtn = document.getElementById("create-post-btn");
+
+        postInput.addEventListener("input", togglePostButton);
+        imageUploadInput.addEventListener("change", handleImageUpload);
+        closeButton.addEventListener("click", closeCreatePostOverlay);
+        createPostBtn.addEventListener("click", openCreatePostOverlay);
+        postClose.addEventListener("click", closeCreatePostOverlay);
+
+        function togglePostButton() {
+          if (
+            postInput.value.trim() !== "" ||
+            imageUploadInput.files.length > 0
+          ) {
+            postButton.disabled = false;
+          } else {
+            postButton.disabled = true;
+          }
+        }
+
+        function handleImageUpload() {
+          const file = imageUploadInput.files[0];
+          if (file) {
+            imageName.textContent = file.name;
+            togglePostButton();
+          } else {
+            imageName.textContent = "";
+            togglePostButton();
+          }
+        }
+
+        function closeCreatePostOverlay() {
+          createPostOverlay.style.display = "none";
+        }
+
+        function openCreatePostOverlay() {
+          createPostOverlay.style.display = "flex";
+        }
+      });
+
+      function togglePostButton() {
+
+if (postInput.value.trim() !== '' || imageUploadInput.files.length > 0) {
+
+    postButton.disabled = false;
+
+} else {
+
+    postButton.disabled = true;
+
+}
+
+}
+
+
+
+function handleImageUpload() {
+
+const file = imageUploadInput.files[0];
+
+if (file) {
+
+    imageName.textContent = file.name;
+
+    togglePostButton();
+
+} else {
+
+    imageName.textContent = '';
+
+    togglePostButton();
+
+}
+
+}
+
+
+
+function closeCreatePostOverlay() {
+
+createPostOverlay.style.display = 'none';
+
+}
+
+
+
+
+
+function openCreatePostOverlay() {
+
+createPostOverlay.style.display = 'flex';
+
+}
+
+;
+    </script>
+  </body>
+</html>
+  
+      
+  </body>
+</html>

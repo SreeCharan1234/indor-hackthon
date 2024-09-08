@@ -1,0 +1,78 @@
+6<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+/* footer {
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+} */
+
+    </style>
+</head>
+<body>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../static/images1/profile.jpg" class="img-fluid rounded-circle" alt="Profile Image">
+                <h3>SH23521280</h3>
+                <p>Mother Tongue: Hindi</p>
+                <button class="btn btn-primary btn-sm">Edit Personal Profile</button>
+                <button class="btn btn-secondary btn-sm">Edit Contact Details</button>
+            </div>
+            <div class="col-md-8" >
+                <h4>Manage your Profile</h4>
+                <div class="card mb-3">
+                    <div class="card-header">About</div>
+                    <div class="card-body">
+                        <p>I want to become a good Data Scientists and excel my knowledge and understandings at that peak level where anyone dreams to be go and If I get some opportunity to work with some companies then definitely I will show my excellence</p>
+                        <p><strong>Age:</strong> {{Age}}</p>
+                        <p><strong>Date of Birth:</strong> {{DOB}}</p>
+                        <p><strong>City:</strong>{{city}}</p>
+                        <p><strong>Grew up in:</strong> {{country}}</p>
+                        <p><strong>Blood Group:</strong>{{BG}}</p>
+                        
+                        <p><strong>Disability:</strong> {{d}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light text-dark mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>My Contact Detail</h5>
+                    <p><strong>Mobile:</strong> {{mb}}</p>
+                    <p><strong>Contact Person:</strong> </p>
+                    <p><strong>Display Option:</strong> You have chosen to display your contact details to all premium members.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script >document.addEventListener('DOMContentLoaded', function() {
+        // JavaScript code for handling user interactions can be added here.
+    });</script>
+</body>
+</html>

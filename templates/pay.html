@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../static/pay.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
+    ">
+
+</head>
+    <style>
+   body {
+	display: grid;
+	grid-template-rows: 1fr;
+	font-family: "Raleway", sans-serif;
+	background-color: black;
+
+}
+
+.product {
+	display: grid;
+    border: 2px solid white;
+	grid-template-columns: 0.9fr 1fr;
+	margin: auto;
+	padding: 2.5em 0;
+	min-width: 600px;
+	background-color: rgb(0, 0, 0);
+	border-radius: 20px;
+}
+.product:hover{
+    transform: scale(1.05);
+    border: 2px solid rgb(20, 3, 255);
+    border-radius: 10px;
+    box-shadow: 0px 0px 60px rgb(128, 127, 127);
+
+     }
+
+     #myimage:hover{
+    transform: scale(1.05);
+    border: 2px solid rgb(20, 3, 255);
+    border-radius: 10px;
+    box-shadow: 0px 0px 80px rgb(0, 0, 0);
+
+     }
+
+     .product__info{
+
+        font-size: large;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+     }
+     #cod{
+        font-weight: bolder;
+        color: blueviolet
+     }
+     .price{
+        color: rgb(0, 110, 0);
+     }
+     .title{
+        font-size: larger;
+     }
+     #list{
+        font-size: large;
+        font-family: cursive;
+        color:orange;
+     }
+     h3,h1{
+        font-size: larger;
+     }
+     .btn{
+        padding: 20px;
+        margin-left: -80px;
+        font-weight: bolder;
+     }
+    </style>
+<body>
+
+  
+    <section class="product">
+        <div class="product__photo">
+            <div class="photo-container">
+               
+                <img src="/static/pickles/main.jpeg" alt="green apple slice" id="myimage">
+         
+            </div>
+        </div>
+        <div class="product__info">
+            <div class="title">
+                <h1 style="color: white;">Mango Pickle</h1>
+                <span id="cod">COD: Rs.50</span>
+            </div>
+            <div class="price">
+                Rs. <span>200</span>
+            </div>
+        
+            <div class="description">
+                <center><h3 style="color: white;">BENEFITS</h3></center>
+                <ul id="list">
+                    <li> Low Calorie</li>
+                    <li> Low-fat source of fibre</li>
+                    <li> Vitamins A and K</li>
+                    <li> Immune-boosting vitamin C</li>
+                </ul>
+            </div>
+            
+            <button id="rzp-button1" class="btn btn-primary">Pay with Razorpay</button>
+        </div>
+    </section>
+    
+    
+
+
+
+            <!-- <button id="rzp-button1">Pay with Razorpay</button> -->
+            <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+            <form action="/success" class="mt-3" method="post">
+            <script>
+            var options = {
+                "key": "rzp_test_PsiHk8wZEcNCkt", // Enter the Key ID generated from the Dashboard
+                "amount": "{{payment['amount']}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name": "SAARTHI", //your business name
+                "description": "Test Transaction",
+                "image": "https://example.com/your_logo",
+                "order_id": "{{payment['order_id']}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "callback_url": "/success", // Updated callback URL
+                "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+                    "name": "Shubham Pandey", //your customer's name
+                    "email": "lionpandey577171@gmail.com",
+                    "contact": "8935909322" //Provide the customer's phone number for better conversion rates 
+                },
+                "notes": {
+                    "address": "Razorpay Corporate Office"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            document.getElementById('rzp-button1').onclick = function(e){
+                rzp1.open();
+                e.preventDefault();
+            }
+            </script>
+
+            </form>
+
+
+
+
+  
+</body>
+</html>
